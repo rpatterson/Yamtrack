@@ -6,9 +6,9 @@ services:
     depends_on:
       - "redis"
     environment:
-      - "TZ=Europe/Berlin"
-      - "SECRET=longstring"
-      - "REDIS_URL=redis://redis:6379"
+      TZ: "Europe/Berlin"
+      SECRET: "longstring"
+      REDIS_URL: "redis://redis:6379"
     volumes:
       - "./db:/yamtrack/db"
     ports:

@@ -7,14 +7,14 @@ services:
       - "db"
       - "redis"
     environment:
-      - "TZ=Europe/Berlin"
-      - "SECRET=longstring"
-      - "REDIS_URL=redis://redis:6379"
-      - "DB_HOST=db"
-      - "DB_NAME=yamtrack"
-      - "DB_USER=yamtrack"
-      - "DB_PASSWORD=yamtrack"
-      - "DB_PORT=5432"
+      TZ: "Europe/Berlin"
+      SECRET: "longstring"
+      REDIS_URL: "redis://redis:6379"
+      DB_HOST: "db"
+      DB_NAME: "yamtrack"
+      DB_USER: "yamtrack"
+      DB_PASSWORD: "yamtrack"
+      DB_PORT: "5432"
     ports:
       - "8000:8000"
 
@@ -22,9 +22,9 @@ services:
     image: "postgres:16-alpine"
     container_name: "yamtrack-db"
     environment:
-      - "POSTGRES_DB=yamtrack"
-      - "POSTGRES_USER=yamtrack"
-      - "POSTGRES_PASSWORD=yamtrack"
+      POSTGRES_DB: "yamtrack"
+      POSTGRES_USER: "yamtrack"
+      POSTGRES_PASSWORD: "yamtrack"
     volumes:
       - "./db:/var/lib/postgresql/data"
     restart: "unless-stopped"
