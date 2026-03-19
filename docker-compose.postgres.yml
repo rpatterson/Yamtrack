@@ -7,12 +7,12 @@ services:
       - "db"
       - "redis"
     environment:
-      TZ: "Europe/Berlin"
+      TZ: "${TZ:-Etc/UTC}"
       # Generate a random value securely:
       #     $ docker compose run --rm --entrypoint "python" yamtrack -c "\
       #     from django.core.management.utils import get_random_secret_key; \
       #     print(get_random_secret_key())"
-      # SECRET: "longstring"
+      SECRET: "${SECRET:?Must set to secure random string!}"
       REDIS_URL: "redis://redis:6379"
       DB_HOST: "db"
       DB_NAME: "yamtrack"
@@ -21,7 +21,7 @@ services:
       # DB_PASSWORD: "yamtrack"
       DB_PORT: "5432"
     ports:
-      - "8000:8000"
+      - "${LAN_IP:-127.0.0.1}:8000:8000"
 
   db:
     image: "postgres:16-alpine"
