@@ -14,7 +14,7 @@ services:
       SECRET: "${SECRET:?Must set to secure random string!}"
       REDIS_URL: "redis://redis:6379"
     volumes:
-      - "./db:/yamtrack/db"
+      - "./yamtrack/data/:/yamtrack/db/"
     ports:
       - "${LAN_IP:-127.0.0.1}:8000:8000"
 
